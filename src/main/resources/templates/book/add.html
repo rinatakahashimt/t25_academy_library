@@ -21,10 +21,44 @@
                                 <a th:href="@{/book/index}" class="link">← 一覧へ戻る</a>
                             </span>
                         </div>
+                        <table>
+                            <caption></caption>
+                            <tbody>
+                                <tr>
+                                    <th scope="col">書籍名*</th>
+                                    <td>
+                                        <input type="text" name="book_name" placeholder="書籍名を入力" required
+                                            th:field="*{title}" />
+                                    </td>
+                                    <div class="error_msg" th:if="${errTitle}">
+                                        <div th:each="msg : ${errTitle}">
+                                            <p th:text="${msg}" style="color : red"></p>
+                                        </div>
+                                    </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="col">ISBN:*</th>
+                                    <td>
+                                        <input type="text" name="isbn" placeholder="ISBN" required th:field="*{isbn}" />
+                                        <div class="error_msg" th:if="${errIsbn}">
+                                            <div th:each="msg : ${errIsbn}">
+                                                <p th:text="${msg}" style="color : red"></p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="btn_block">
+                            <input type="submit" value="保存">
+                        </div>
                     </form>
                 </div>
+                </form>
             </div>
         </div>
+    </div>
     </div>
     <div th:replace="~{common :: footer}"></div>
 </body>
